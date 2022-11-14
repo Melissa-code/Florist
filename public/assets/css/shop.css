@@ -1,0 +1,41 @@
+/* ***************************** */
+            /* Search */
+/* ***************************** */
+.search {
+    background-color: #7A9E7E;
+    height: 15vh;
+}
+
+/* ***************************** */
+            /* List */
+/* ***************************** */
+
+.list {
+    background-color: #31493C;
+}
+
+.flower-card {
+    width:18rem;
+    border: none;
+}
+.flower-img-card {
+    width: 7rem;
+}
+
+/* ***************************** */
+            /* Pagination */
+/* ***************************** */
+
+.page-item {
+    list-style: none;
+    color: black;
+}
+
+.page-link {
+    color: black;
+}
+
+
+.page-link:hover {
+    color: #7A9E7E;
+}

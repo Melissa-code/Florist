@@ -8,6 +8,84 @@
     Boutique
 {% endblock %}
 
+
 {% block main %}
-    <h1>Boutique </h1>
+
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row">
+
+                {#  Title #}
+
+                <section class="col-12 title pt-4">
+                    <h1 class="text-center mb-4">Nos Fleurs</h1>
+                </section>
+
+                {#  Search #}
+
+                <section class="col-12 search d-flex justify-content-center align-items-center">
+                        <form class="d-flex ">
+                            <div class="form-group mr-3">
+                                <select class="form-control" id="categorySelect">
+                                    <option>--  Sélectionner une saison  --</option>
+                                    <option>Printemps</option>
+                                    <option>Eté</option>
+                                    <option>Automne</option>
+                                    <option>Hiver</option>
+                                </select>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-dark" >Rechercher</button>
+                            </div>
+                        </form>
+                </section>
+
+                <div class="row list">
+
+                {# List  #}
+
+                <section class="col-12 d-flex p-4 d-flex justify-content-center">
+                    <div class="d-flex flex-wrap justify-content-center pb-5 mt-5">
+
+                        {% for flower in flowers  %}
+                        <div class="card flower-card m-3">
+                            <div class="row no-gutters">
+                                <div class="col-4">
+                                    <img src="{{ asset('assets/img/photos/mimosa-hiver.png') }}" alt="mimosa" class="flower-img-card">
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body">
+                                        <h3 class="card-title">{{ flower.name }}</h3>
+                                        <p class="card-text">{{ flower.price }} €</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </section>
+
+                {# Pagination  #}
+
+                <section class="col-12 pagination justify-content-center align-items-center p-4 ">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end">
+                            <li class="page-item">
+                                <a class="page-link" href="#">Préc.</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Suiv.</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </section>
+            </div>
+
+            </div>
+        </div>
+    </div>
+
 {% endblock main %}
