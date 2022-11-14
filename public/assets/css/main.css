@@ -1,0 +1,54 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+h2 {
+   font-size: 3rem;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#main-menu {
+    background-color: #001A23;
+}
+
+.navbar-brand, .nav-link {
+    color:white!important;
+}
+
+.navbar-brand {
+    font-size: 40px;
+}
+
+footer {
+    background-color: #E8F1F2;
+}
+
+.footer-link {
+    color: black;
+}
+.footer-link:hover {
+    color: #7A9E7E;
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+
+/****************************************************************************/
+                /*          Media queries           */
+/****************************************************************************/
+
+@media screen and (min-device-width: 280px) and (max-device-width: 768px) {
+
+    h1, h2 {
+        font-size: 2rem;
+    }
+
+}

@@ -1,0 +1,309 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/home.css') }}">
+{% endblock css %}
+
+{% block title %}
+    Accueil
+{% endblock %}
+
+{% block main %}
+
+    {# Image presentation #}
+
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row">
+                <section class="col-12 img-presentation d-flex justify-content-center align-items-center">
+                    <div class="pt-5">
+                        <div class="d-flex flex-column align-items-center pt-5">
+                            <h1 class="home-title pt-5">FLORIST </h1>
+                            <blockquote class="slogan">Boutique de fleurs en ligne</blockquote>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    {# Text Presentation  #}
+
+    <div class="container">
+        <div class="row">
+
+            <section class="col-12 presentation pt-5">
+                <p class="text-justify">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    <br /><br />
+                    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </section>
+            <hr>
+
+            {# Services  #}
+
+            <section class="col-12 services pt-3">
+
+                <div class="title mb-4">
+                    <h2 class="text-center">Nos Services</h2>
+                </div>
+
+                {# Services cards #}
+                <div class="d-flex flex-wrap justify-content-center text-white">
+                    <div class="card card-icon py-4 m-2" style="width: 15rem;">
+                        <div class="d-flex justify-content-center">
+                            <img src="{{ asset('assets/img/icons/operator.png') }}" class="card-img-top card-img-icon" alt="conseils de pro">
+                        </div>
+                        <div class="card-body d-flex justify-content-center">
+                            <h3 class="card-text">Conseils de pro</h3>
+                        </div>
+                    </div>
+                    <div class="card card-icon py-4 m-2" style="width: 15rem;">
+                        <div class="d-flex justify-content-center mt-2">
+                            <img src="{{ asset('assets/img/icons/guarantee.png') }}" class="card-img-top card-img-icon" alt="garantie fraîcheur">
+                        </div>
+                        <div class="card-body d-flex justify-content-center">
+                            <h3 class="card-text">Guarantie fraîcheur</h3>
+                        </div>
+                    </div>
+                    <div class="card card-icon py-4 m-2" style="width: 15rem;">
+                        <div class="d-flex justify-content-center mt-2">
+                            <img src="{{ asset('assets/img/icons/delivery-time.png') }}" class="card-img-top card-img-icon" alt="livraison gratuite">
+                        </div>
+                        <div class="card-body d-flex justify-content-center">
+                            <h3 class="card-text">Livraison gratuite</h3>
+                        </div>
+                    </div>
+                    <div class="card card-icon py-4 m-2" style="width: 15rem;">
+                        <div class="d-flex justify-content-center mt-2">
+                            <img src="{{ asset('assets/img/icons/shop.png') }}" class="card-img-top card-img-icon" alt="Retrait en magasin">
+                        </div>
+                        <div class="card-body d-flex justify-content-center">
+                            <h3 class="card-text">Retrait en magasin</h3>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </div>
+
+    {# Season flowers #}
+
+    <div class="row mt-5">
+        <div class="container-fluid">
+            <div class="row">
+
+                <section class="col-12 season-flowers">
+
+                    <div class="mb-4">
+                        <h2 class="text-center text-white pt-4">Nos fleurs de saison</h2>
+                    </div>
+
+                    {# Cards flowers-season #}
+                    <div class="d-flex flex-wrap justify-content-center pb-5">
+
+                        <div class="card flower-card m-3">
+                            <div class="row no-gutters">
+                                <div class="col-4">
+                                    <img src="{{ asset('assets/img/photos/mimosa-hiver.png') }}" alt="mimosa" class="flower-img-card">
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Mimosa</h3>
+                                        <p class="card-text">19,95 €</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card flower-card m-3" style="width: 18rem;">
+                            <div class="row no-gutters">
+                                <div class="col-4">
+                                    <img src="{{ asset('assets/img/photos/anemone-hiver.png') }}" alt="anemone" class="flower-img-card">
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Anémone</h3>
+                                        <p class="card-text">19,95 €</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card flower-card m-3" style="width: 18rem;">
+                            <div class="row no-gutters">
+                                <div class="col-4">
+                                    <img src="{{ asset('assets/img/photos/camelia-hiver.png') }}" alt="camelia" class="flower-img-card">
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Camélia</h3>
+                                        <p class="card-text">19,95 €</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card flower-card m-3" style="width: 18rem;">
+                            <div class="row no-gutters">
+                                <div class="col-4">
+                                    <img src="{{ asset('assets/img/photos/pensee-hiver.png') }}" alt="pensee" class="flower-img-card">
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Pensée</h3>
+                                        <p class="card-text">19,95 €</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {# Best sales #}
+
+                <section class="col-12 best-flowers pt-5">
+                    <div class="mb-4">
+                        <h2 class="text-center">Nos meilleures ventes</h2>
+                    </div>
+
+                    <div class="d-flex flex-wrap justify-content-center pb-5">
+                        {# Cards flowers #}
+                        <div class="card flower-card m-3" style="width: 18rem;">
+                            <div class="row no-gutters">
+                                <div class="col-4">
+                                    <img src="{{ asset('assets/img/photos/rose-printemps.png') }}" alt="rose" class="flower-img-card">
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Rose</h3>
+                                        <p class="card-text">19,95 €</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card flower-card m-3" style="width: 18rem;">
+                            <div class="row no-gutters">
+                                <div class="col-4">
+                                    <img src="{{ asset('assets/img/photos/tulipe-printemps.png') }}" alt="tulipe" class="flower-img-card">
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Tulipe</h3>
+                                        <p class="card-text">19,95 €</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card flower-card m-3" style="width: 18rem;">
+                            <div class="row no-gutters">
+                                <div class="col-4">
+                                    <img src="{{ asset('assets/img/photos/jasmin-printemps-ete-automne.png') }}" alt="jasmin" class="flower-img-card">
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Jasmin</h3>
+                                        <p class="card-text">19,95 €</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card flower-card m-3" style="width: 18rem;">
+                            <div class="row no-gutters">
+                                <div class="col-4">
+                                    <img src="{{ asset('assets/img/photos/narcisse-printemps.png') }}" alt="narcisse" class="flower-img-card">
+                                </div>
+                                <div class="col-8">
+                                    <div class="card-body">
+                                        <h3 class="card-title ">Narcisse</h3>
+                                        <p class="card-text">19,95 €</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+
+                {# About us #}
+
+                <section class="col-12 about pt-5" id="about-us">
+                    <div class="mb-4">
+                        <h2 class="text-center text-white">A Propos</h2>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-6 pb-4">
+                            <p class="text-white text-justify p-4">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                                aliqua.<br/><br/>
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. <br/><br/>
+                                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                            </p >
+                        </div>
+                        <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
+                            <div>
+                                <img src="{{ asset('assets/img/photos/gardener.png') }}" alt="jardinier" style="width: 20rem;">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {# Customers reviews  #}
+
+                <section class="col-12 reviews py-5">
+                    <div class="mb-4">
+                        <h2 class="text-center">Avis de nos clients</h2>
+                    </div>
+
+                    <div class="d-flex flex-wrap justify-content-center text-white">
+                        {# Cards reviews #}
+                        <div class="card card-icon m-3" style="width: 18rem;">
+                            <div class="row no-gutters">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center mt-3 mt-md-1">
+                                    <img src="{{ asset('assets/img/photos/stephanie.png') }}" alt="avis de Stéphanie" style="width:4rem; border-radius:50%;">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <p class="card-text text-justify">"Lorem ipsum dolor sit amet, consectetur setempor."</p>
+                                        <p class="card-text">Stéphanie, 33 ans</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-icon m-3" style="width: 18rem;">
+                            <div class="row no-gutters">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center mt-3 mt-md-1">
+                                    <img src="{{ asset('assets/img/photos/lucie.png') }}" alt="avis de Lucie" style="width:4rem; border-radius:50%;">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <p class="card-text text-justify">"Lorem ipsum dolor sit amet, consectetur adipiscing elit."</p>
+                                        <p class="card-text">Lucie, 25 ans</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card card-icon m-3" style="width: 18rem;">
+                            <div class="row no-gutters">
+                                <div class="col-md-4 d-flex justify-content-center align-items-center mt-3 mt-md-1">
+                                    <img src="{{ asset('assets/img/photos/joseph.png') }}" alt="avis de Joseph" style="width:4rem; border-radius:50%;">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <p class="card-text text-justify">"Lorem ipsum dolor sit amet sed do eiusmod tempor."</p>
+                                        <p class="card-text">Joseph, 35 ans</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock main %}

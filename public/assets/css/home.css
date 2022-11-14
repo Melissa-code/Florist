@@ -1,0 +1,67 @@
+.img-presentation {
+    height: 50vh;
+    background: url("../img/photos/flowers.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.home-title {
+    font-size: 50px;
+    font-weight: bold ;
+}
+
+.slogan {
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold ;
+}
+
+
+hr {
+    width: 100%;
+    color: #7A9E7E;
+}
+.card-icon {
+    background-color: #7A9E7E;
+    border: none;
+}
+
+.card-img-icon {
+    width: 3rem;
+    padding-top: 1rem;
+}
+
+.season-flowers {
+    background-color: #31493C;
+}
+.flower-card {
+    width:18rem;
+    border: none;
+}
+.flower-img-card {
+    width: 7rem;
+}
+
+.best-flowers {
+    background-color: #E8F1F2;
+}
+
+.about {
+    background-color: #001A23;
+}
+
+
+
+/****************************************************************************/
+                    /*          Media queries           */
+/****************************************************************************/
+
+@media screen and (min-device-width: 280px) and (max-device-width: 768px) {
+
+    .slogan {
+        font-size: 1.5rem;
+    }
+    .img-presentation {
+        display: none;
+    }
+}
