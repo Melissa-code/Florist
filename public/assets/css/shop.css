@@ -39,3 +39,32 @@
 .page-link:hover {
     color: #7A9E7E;
 }
+
+.detail-link {
+    color: black;
+}
+
+.detail-link:hover {
+    color: black;
+    text-decoration: none;
+    color: #7A9E7E;
+}
+
+/* ***************************** */
+            /* Detail */
+/* ***************************** */
+
+
+.flower-article {
+    width:60rem;
+    border: none;
+    background-color: #7A9E7E;
+}
+
+.img-article {
+    width: 17rem;
+}
+
+.title-article {
+    font-size: 2rem;
+}

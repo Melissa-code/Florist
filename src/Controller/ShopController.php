@@ -43,6 +43,35 @@ class ShopController extends AbstractController
     #[Route('/shop/{id}', name:'app_shop_article')]
     public function article($id): Response
     {
-        return $this->render('shop/article.html.twig');
+        $flowers = [
+            1 => [
+                "id" => 1,
+                "name"=>"Mimosa",
+                "price"=> 19.95,
+                "content" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+            ],
+            2 => [
+                "id" => 2,
+                "name"=>"Chrysanthème",
+                "price"=> 20.95,
+                "content" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+            ],
+            3 => [
+                "id" => 3,
+                "name"=>"Hortensia",
+                "price"=> 21.95,
+                "content" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+            ],
+            4 => [
+                "id" => 4,
+                "name"=>"Lavande",
+                "price"=> 22.95,
+                "content" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+            ],
+        ];
+
+        return $this->render('shop/article.html.twig', [
+            "flower" => $flowers[1]
+        ]);
     }
 }

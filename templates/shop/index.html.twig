@@ -51,11 +51,13 @@
                         <div class="card flower-card m-3">
                             <div class="row no-gutters">
                                 <div class="col-4">
-                                    <img src="{{ asset('assets/img/photos/mimosa-hiver.png') }}" alt="mimosa" class="flower-img-card">
+                                    <img src="{{ asset('assets/img/photos/mimosa-hiver.png') }}" alt="{{ flower.name }}" class="flower-img-card">
                                 </div>
                                 <div class="col-8">
                                     <div class="card-body">
-                                        <h3 class="card-title">{{ flower.name }}</h3>
+                                        <h3 class="card-title">
+                                            <a class="detail-link" href="{{ path('app_shop_article', {'id':flower.id}) }}">{{ flower.name }}</a>
+                                        </h3>
                                         <p class="card-text">{{ flower.price }} €</p>
                                     </div>
                                 </div>

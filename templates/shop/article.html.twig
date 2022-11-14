@@ -8,6 +8,48 @@
     Boutique-article
 {% endblock %}
 
+
 {% block main %}
-    Article
+
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row">
+
+                {#  Title #}
+
+                <section class="col-12 title pt-4">
+                    <h1 class="text-center mb-4">Détail d'une fleur</h1>
+                </section>
+
+                {# Article #}
+
+                <section class="col-12 article d-flex justify-content-center my-5 pb-4">
+                    <div class="card flower-article m-3">
+                        <div class="row no-gutters">
+                            <div class="col-4">
+                                <img src="{{ asset('assets/img/photos/mimosa-hiver.png') }}" alt="{{ flower.name }}" class="img-article">
+                            </div>
+                            <div class="col-8">
+                                <div class="card-body">
+                                    <h2 class="card-title title-article my-4">
+                                        {{ flower.name }}</a>
+                                    </h2>
+                                    <p class="card-text">{{ flower.price }} €</p>
+                                    <p class="card-text text-justify mr-5">{{ flower.content }}</p>
+                                    <form action="" class="d-flex my-4">
+                                        <div class="form-group d-flex my-4">
+                                            <input type="number" class="form-control mr-3" id="quantity-input" placeholder="quantité">
+                                            <button class="btn btn-dark">Ajouter </button>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
 {% endblock main %}
