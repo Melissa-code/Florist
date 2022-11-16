@@ -1,0 +1,31 @@
+.section-error {
+    background-color: #7A9E7E;
+}
+
+.error-msg {
+    font-size: 3vh;
+}
+
+.sad-icon, .happy-icon {
+    width: 6vh;
+}
+
+.error-link {
+    font-size: 2vh;
+}
+
+.error-link:hover {
+    color: #001A23;
+}
+
+.section-404 {
+    background-color: #31493C;
+}
+
+.error404 {
+    font-size: 25vh;
+}
+
+.flower-icon {
+    width: 22vh;
+}

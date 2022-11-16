@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/error.css') }}">
+{% endblock css %}
+
+{% block title %}
+    Error 404
+{% endblock %}
+
+
+{% block main %}
+
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center">
+
+                {#  Title #}
+
+                <section class="col-12 title pt-4">
+                    <h1 class="text-center mb-4">Page introuvable</h1>
+                </section>
+
+                {#  Error Message #}
+
+                <section class="col-12 mt-4 section-error py-3 text-white">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <img class="sad-icon mr-2" src="{{ asset('assets/img/icons/sad.svg') }}" alt="triste"></img>
+                        <p class="error-msg">Oups, la page que vous cherchez n'existe pas.</p>
+                    </div>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <a href="{{ path('app_home') }}" class="error-link text-decoration-none text-white">Retourner à la page d'Accueil</a>
+                        <img class="sad-icon ml-2" src="{{ asset('assets/img/icons/happy.svg') }}" alt="joyeux"></img>
+                    </div>
+
+                </section>
+
+
+                {# Custom 404 #}
+
+                <section class="col-12 py-4 section-404 d-flex justify-content-center align-items-center text-white">
+                    <p class="error404">4<img class="flower-icon pb-5" src="{{ asset('assets/img/icons/flower.svg') }}" alt="fleur"></img>4</p>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock main %}
