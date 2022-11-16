@@ -1,0 +1,16 @@
+.cart {
+    background-color: #31493C;
+}
+
+.cart-img {
+    width: 3rem;
+}
+
+.custom-thead {
+    background-color: #7A9E7E;
+    color: #FFFFFF;
+}
+
+.custom-border {
+    border: 2px solid #7A9E7E;
+}

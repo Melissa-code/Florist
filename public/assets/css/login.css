@@ -6,20 +6,3 @@
     background-color: #7A9E7E;
 
 }
-
-.custom-btn {
-    background-color: #001A23;
-}
-
-.custom-btn:hover {
-    background-color: #B3EFB2;
-    color: black;
-}
-
-.create-account {
-    color: white;
-}
-
-.create-account:hover {
-    color: #001A23;
-}

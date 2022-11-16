@@ -30,6 +30,57 @@ h3 {
     font-size: 40px;
 }
 
+
+/* *********************************************** */
+        /* Pagination */
+/* *********************************************** */
+
+.page-item {
+    list-style: none;
+    color: black;
+}
+
+.page-link {
+    color: black;
+}
+
+
+.page-link:hover {
+    color: #7A9E7E;
+}
+
+.detail-link {
+    color: black;
+}
+
+.detail-link:hover {
+    color: black;
+    text-decoration: none;
+    color: #7A9E7E;
+}
+
+
+/* ********************************************** */
+                /* Button */
+/* ********************************************** */
+
+.custom-btn {
+    background-color: #001A23;
+}
+
+.custom-btn:hover {
+    background-color: #B3EFB2;
+    color: black;
+}
+
+.create-account {
+    color: white;
+}
+
+.create-account:hover {
+    color: #001A23;
+}
+
 /* ********************************************** */
                 /* Footer*/
 /* ********************************************** */

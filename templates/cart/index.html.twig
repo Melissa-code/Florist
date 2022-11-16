@@ -8,6 +8,90 @@
     Panier
 {% endblock %}
 
+
 {% block main %}
-   Panier
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center">
+
+                {#  Title #}
+
+                <section class="col-12 title pt-4">
+                    <h1 class="text-center mb-4">Mon Panier</h1>
+                </section>
+
+                {#  Cart Table #}
+
+                <section class="col-md-10 ">
+                    <table class="table table-striped custom-border">
+                        <thead class="custom-thead">
+                        <tr>
+                            <th scope="col">Image</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Prix</th>
+                            <th scope="col">Quantité</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Supprimer</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row"><img class="cart-img" src="{{ asset('assets/img/photos/tulipe-printemps.png') }}" alt=""></th>
+                            <td>Tulipe</td>
+                            <td>19,95 €</td>
+                            <td>10</td>
+                            <td>19,95 €</td>
+                            <td>x</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><img class="cart-img" src="{{ asset('assets/img/photos/rose-printemps.png') }}" alt=""></th>
+                            <td>Rose</td>
+                            <td>19,95 €</td>
+                            <td>12</td>
+                            <td>19,95 €</td>
+                            <td>x</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><img class="cart-img" src="{{ asset('assets/img/photos/iris-printemps-ete-automne.png') }}" alt=""></th>
+                            <td>Iris</td>
+                            <td>19,95 €</td>
+                            <td>20</td>
+                            <td>19,95 €</td>
+                            <td>x</td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+
+                    {#  Buttons #}
+
+                    <div class="d-flex justify-content-center py-4">
+                        <button type="submit" class="btn btn-dark custom-btn mr-2">Poursuivre mes achats</button>
+                        <button type="submit" class="btn btn-dark custom-btn mr-2">Supprimer mon panier</button>
+                        <button type="submit" class="btn btn-dark custom-btn mr-2">Valider mon panier</button>
+                    </div>
+                </section>
+
+
+                {# Pagination  #}
+
+                <section class="col-12 pagination justify-content-center align-items-center pt-5 pb-2">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end">
+                            <li class="page-item">
+                                <a class="page-link" href="#">Préc.</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Suiv.</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </section>
+
+            </div>
+        </div>
+    </div>
 {% endblock main %}

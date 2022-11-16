@@ -22,33 +22,6 @@
     width: 7rem;
 }
 
-/* ***************************** */
-            /* Pagination */
-/* ***************************** */
-
-.page-item {
-    list-style: none;
-    color: black;
-}
-
-.page-link {
-    color: black;
-}
-
-
-.page-link:hover {
-    color: #7A9E7E;
-}
-
-.detail-link {
-    color: black;
-}
-
-.detail-link:hover {
-    color: black;
-    text-decoration: none;
-    color: #7A9E7E;
-}
 
 /* ***************************** */
             /* Detail */
