@@ -8,24 +8,28 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: CartFlowerRepository::class)]
 class CartFlower
 {
-    #[ORM\Id]
-    #[ORM\GeneratedValue]
-    #[ORM\Column]
-    private ?int $id = null;
+//    #[ORM\Id]
+//    #[ORM\GeneratedValue]
+//    #[ORM\Column]
+//    private ?int $id = null;
 
+    #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'cartFlowers')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Flower $flower = null;
 
+    #[ORM\Id]
     #[ORM\ManyToOne(inversedBy: 'cartFlowers')]
+    #[ORM\JoinColumn(nullable: false)]
     private ?Cart $cart = null;
 
     #[ORM\Column]
     private ?int $quantity = null;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+//    public function getId(): ?int
+//    {
+//        return $this->id;
+//    }
 
     public function getFlower(): ?Flower
     {

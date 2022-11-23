@@ -23,23 +23,23 @@ class Flower
     private ?float $price = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $description = null;
+    private ?string $content = null;
 
     #[ORM\Column]
-    private ?bool $new = null;
+    private ?bool $isNew = null;
 
     #[ORM\ManyToOne(inversedBy: 'flowers')]
     private ?Discount $discount = null;
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'flowers')]
-    private Collection $category;
+    private Collection $categories;
 
     #[ORM\OneToMany(mappedBy: 'flower', targetEntity: CartFlower::class)]
     private Collection $cartFlowers;
 
     public function __construct()
     {
-        $this->category = new ArrayCollection();
+        $this->categories = new ArrayCollection();
         $this->cartFlowers = new ArrayCollection();
     }
 
@@ -72,26 +72,26 @@ class Flower
         return $this;
     }
 
-    public function getDescription(): ?string
+    public function getContent(): ?string
     {
-        return $this->description;
+        return $this->content;
     }
 
-    public function setDescription(?string $description): self
+    public function setContent(?string $content): self
     {
-        $this->description = $description;
+        $this->content = $content;
 
         return $this;
     }
 
-    public function isNew(): ?bool
+    public function isIsNew(): ?bool
     {
-        return $this->new;
+        return $this->isNew;
     }
 
-    public function setNew(bool $new): self
+    public function setIsNew(bool $isNew): self
     {
-        $this->new = $new;
+        $this->isNew = $isNew;
 
         return $this;
     }
@@ -111,15 +111,15 @@ class Flower
     /**
      * @return Collection<int, Category>
      */
-    public function getCategory(): Collection
+    public function getCategories(): Collection
     {
-        return $this->category;
+        return $this->categories;
     }
 
     public function addCategory(Category $category): self
     {
-        if (!$this->category->contains($category)) {
-            $this->category->add($category);
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
         }
 
         return $this;
@@ -127,7 +127,7 @@ class Flower
 
     public function removeCategory(Category $category): self
     {
-        $this->category->removeElement($category);
+        $this->categories->removeElement($category);
 
         return $this;
     }

@@ -19,6 +19,7 @@ class Cart
     private ?float $total = null;
 
     #[ORM\OneToOne(inversedBy: 'cart', cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
     #[ORM\OneToOne(mappedBy: 'cart', cascade: ['persist', 'remove'])]
@@ -54,7 +55,7 @@ class Cart
         return $this->user;
     }
 
-    public function setUser(?User $user): self
+    public function setUser(User $user): self
     {
         $this->user = $user;
 
@@ -66,15 +67,10 @@ class Cart
         return $this->invoice;
     }
 
-    public function setInvoice(?Invoice $invoice): self
+    public function setInvoice(Invoice $invoice): self
     {
-        // unset the owning side of the relation if necessary
-        if ($invoice === null && $this->invoice !== null) {
-            $this->invoice->setCart(null);
-        }
-
         // set the owning side of the relation if necessary
-        if ($invoice !== null && $invoice->getCart() !== $this) {
+        if ($invoice->getCart() !== $this) {
             $invoice->setCart($this);
         }
 
