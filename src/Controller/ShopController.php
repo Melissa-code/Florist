@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\FlowerRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,31 +10,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class ShopController extends AbstractController
 {
     #[Route('/shop', name:'app_shop')]
-    public function shop(): Response
+    public function shop(FlowerRepository $flowerRepository): Response
     {
-        $flowers = [
-            1 => [
-                "id" => 1,
-                "name"=>"Mimosa",
-                "price"=> 19.95,
-            ],
-            2 => [
-                "id" => 2,
-                "name"=>"Chrysanthème",
-                "price"=> 20.95,
-            ],
-            3 => [
-                "id" => 3,
-                "name"=>"Hortensia",
-                "price"=> 21.95,
-            ],
-            4 => [
-                "id" => 4,
-                "name"=>"Lavande",
-                "price"=> 22.95,
-            ],
-
-        ];
+        $flowers = $flowerRepository->findAll();
 
         return $this->render('shop/index.html.twig', [
             "flowers" => $flowers
@@ -43,35 +22,10 @@ class ShopController extends AbstractController
     #[Route('/shop/{id}', name:'app_shop_article')]
     public function article($id): Response
     {
-        $flowers = [
-            1 => [
-                "id" => 1,
-                "name"=>"Mimosa",
-                "price"=> 19.95,
-                "content" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
-            ],
-            2 => [
-                "id" => 2,
-                "name"=>"Chrysanthème",
-                "price"=> 20.95,
-                "content" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
-            ],
-            3 => [
-                "id" => 3,
-                "name"=>"Hortensia",
-                "price"=> 21.95,
-                "content" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
-            ],
-            4 => [
-                "id" => 4,
-                "name"=>"Lavande",
-                "price"=> 22.95,
-                "content" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
-            ],
-        ];
+
 
         return $this->render('shop/article.html.twig', [
-            "flower" => $flowers[1]
+
         ]);
     }
 }
