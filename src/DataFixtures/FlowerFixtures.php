@@ -15,9 +15,7 @@ class FlowerFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $date1 = new DateTime();
-
         $date2 = new DateTime('2023/05/31');
-
 
         $discount1 = new Discount();
         $discount1->setValue(0.20)

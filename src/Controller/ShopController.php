@@ -20,12 +20,12 @@ class ShopController extends AbstractController
     }
 
     #[Route('/shop/{id}', name:'app_shop_article')]
-    public function article($id): Response
+    public function article(FlowerRepository $flowerRepository, $id): Response
     {
-
+        $flower = $flowerRepository->find($id);
 
         return $this->render('shop/article.html.twig', [
-
+            "flower" => $flower
         ]);
     }
 }
