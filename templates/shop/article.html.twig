@@ -27,7 +27,7 @@
                     <div class="card flower-article m-3">
                         <div class="row no-gutters">
                             <div class="col-4">
-                                <img src="{{ asset('assets/img/photos/mimosa-hiver.png') }}" alt="{{ flower.name }}" class="img-article">
+                                <img src="{{ asset('assets/img/photos/mimosa-hiver.png') }}" alt="{{ flower.name }}" class="img-article rounded-left">
                             </div>
                             <div class="col-8">
                                 <div class="card-body">
@@ -53,7 +53,7 @@
                                     <form action="{{ path('app_cart') }}" class="d-flex my-4">
                                         <div class="form-group d-flex my-4">
                                             <input type="number" class="form-control mr-3" id="quantity-input" placeholder="quantité">
-                                            <button class="btn btn-dark">Ajouter </button>
+                                            <button type="submit" class="btn custom-btn text-white">Ajouter </button>
                                         </div>
                                     </form>
 

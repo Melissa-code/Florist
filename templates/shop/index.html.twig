@@ -17,35 +17,39 @@
 
                 {#  Title #}
 
-                <section class="col-12 title pt-4">
+                <section class="col-12 title py-4">
                     <h1 class="text-center mb-4">Nos Fleurs</h1>
                 </section>
 
                 {#  Search #}
 
-                <section class="col-12 search d-flex justify-content-center align-items-center">
-                        <form class="d-flex ">
-                            <div class="form-group mr-3">
-                                <select class="form-control" id="categorySelect">
-                                    <option>--  Sélectionner une saison  --</option>
-                                    <option>Printemps</option>
-                                    <option>Eté</option>
-                                    <option>Automne</option>
-                                    <option>Hiver</option>
-                                </select>
-                            </div>
-                            <div>
-                                <button type="button" class="btn btn-dark" >Rechercher</button>
-                            </div>
-                        </form>
-                </section>
+                <section class="col-12 search d-flex justify-content-center align-items-center flex-wrap">
+                    <form class="d-flex mr-5">
+                        <div class="form-group mr-3">
+                            <input type="text" class="form-control" id="search-flower" placeholder="Rechercher une fleur" style="width: 300px;">
+                        </div>
+                    </form>
 
-                <div class="row list">
+                    <form class="d-flex ">
+                        <div class="form-group mr-2">
+                            <select class="form-control" id="categorySelect">
+                                <option>--  Sélectionner une saison  --</option>
+                                <option>Printemps</option>
+                                <option>Eté</option>
+                                <option>Automne</option>
+                                <option>Hiver</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button type="button" class="btn custom-btn text-white" >Rechercher</button>
+                        </div>
+                    </form>
+                </section>
 
                 {# List  #}
 
-                <section class="col-12 d-flex p-4 d-flex justify-content-center">
-                    <div class="d-flex flex-wrap justify-content-center pb-5 mt-5">
+                <section class="col-12 p-4 list">
+                    <article class="d-flex flex-wrap justify-content-center pb-5 mt-5" id="flowers-list" >
 
                         {% for flower in flowers  %}
                         <div class="card flower-card m-3">
@@ -74,30 +78,28 @@
                             </div>
                         </div>
                         {% endfor %}
-                    </div>
-                </section>
+                    </article>
 
-                {# Pagination  #}
+                    {# Pagination  #}
 
-                <section class="col-12 pagination justify-content-center align-items-center p-4 mt-5">
-                    <nav aria-label="Page navigation example">
-                        <ul class="pagination justify-content-end">
-                            <li class="page-item">
-                                <a class="page-link" href="#">Préc.</a>
-                            </li>
+                    <nav aria-label="Page navigation example mt-5">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item"><a class="page-link" href="#">Préc.</a></li>
                             <li class="page-item"><a class="page-link" href="#">1</a></li>
                             <li class="page-item"><a class="page-link" href="#">2</a></li>
                             <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Suiv.</a>
-                            </li>
+                            <li class="page-item"><a class="page-link" href="#">Suiv.</a></li>
                         </ul>
                     </nav>
+
                 </section>
-            </div>
 
             </div>
         </div>
     </div>
 
 {% endblock main %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/shop.js') }}"></script>
+{% endblock %}
