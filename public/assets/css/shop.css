@@ -22,6 +22,10 @@
     width: 7rem;
 }
 
+.strikethrough-text {
+    text-decoration:line-through;
+}
+
 
 /* ***************************** */
             /* Detail */
@@ -40,4 +44,8 @@
 
 .title-article {
     font-size: 2rem;
+}
+
+.flower-badge {
+    color: #7A9E7E;
 }

@@ -39,6 +39,20 @@ class FlowerRepository extends ServiceEntityRepository
         }
     }
 
+
+    /**
+    * @return Flower[] Returns an array of Flower objects in alphabetical order
+    */
+    public function findByAlphabeticalOrder(): array
+    {
+        return $this->createQueryBuilder('f')
+            ->orderBy('f.name', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
 //    /**
 //     * @return Flower[] Returns an array of Flower objects
 //     */
