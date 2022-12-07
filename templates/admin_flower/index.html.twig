@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/cart.css') }}">
+{% endblock css %}
+
+{% block title %}
+    Gestion des fleurs
+{% endblock %}
+
+
+{% block main %}
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center">
+
+                {#  Title #}
+
+                <section class="col-12 title pt-4">
+                    <h1 class="text-center mb-4">Gestion des fleurs</h1>
+                </section>
+
+                {#  Cart Table #}
+
+                <section class="col-md-10 ">
+
+                    {#  Add Button #}
+
+                    <div class="d-flex justify-content-center py-4">
+                        <a class="btn custom-btn mr-2 d-flex justify-content-center align-items-center" href="">
+                            <img src="{{ asset('assets/img/icons/add.svg') }}" alt="Ajouter une fleur" style="width: 20px;">
+                            <span class="text-white ml-2">Ajouter une fleur</span>
+                        </a>
+                    </div>
+
+                    <table class="table table-striped custom-border">
+                        <thead class="custom-thead">
+                        <tr>
+                            <th scope="col" class="text-center">Image</th>
+                            <th scope="col" class="text-center">Nom</th>
+                            <th scope="col" class="text-center">Prix</th>
+                            <th scope="col" class="text-center">Description</th>
+                            <th scope="col" class="text-center">Nouveauté</th>
+                            <th scope="col" class="text-center">Promotion</th>
+                            <th scope="col" class="text-center">Catégories</th>
+                            <th scope="col" class="text-center">Action</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for flower in flowers %}
+                            <tr class="table">
+                                <td><img class="cart-img" src="{{ asset('assets/img/photos/' ~ flower.image) }}" alt="{{ flower.name }}"></td>
+                                <td>{{ flower.name }}</td>
+                                <td>{{ flower.price }} €</td>
+                                <td>{{ flower.content }}</td>
+                                <td>{{ flower.isNew }}</td>
+
+                                {# Discount #}
+                                {% if(flower.discount) %}
+                                    <td>{{ flower.discount.value }}</td>
+                                {% else %}
+                                    <td>0</td>
+                                {% endif %}
+
+                                {# Categories #}
+                                {% for category in flower.categories %}
+                                    <td class="d-flex ">{{ category.name }}</td>
+                                {% endfor %}
+
+                                {# Update button #}
+                                <td>
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <a class="btn custom-btn mr-2" href="">
+                                            <img src="{{ asset('assets/img/icons/update.svg') }}" alt="modifier la fleur" style="width: 20px;">
+                                        </a>
+                                        {# Delete button #}
+                                        <form>
+                                            <button type="submit" class="btn custom-btn" value="Supprimer">
+                                                <img src="{{ asset('assets/img/icons/delete.svg') }}" alt="supprimer la fleur" style="width: 20px;">
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+
+                </section>
+
+
+                {# Pagination  #}
+
+                <section class="col-12 pagination justify-content-center align-items-center pt-5 pb-2">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end">
+                            <li class="page-item">
+                                <a class="page-link" href="#">Préc.</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Suiv.</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </section>
+
+            </div>
+        </div>
+    </div>
+{% endblock main %}

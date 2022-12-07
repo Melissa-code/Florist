@@ -5,7 +5,7 @@
 {% endblock css %}
 
 {% block title %}
-    Boutique-article
+    {{ flower.name }}
 {% endblock %}
 
 
@@ -18,28 +18,29 @@
                 {#  Title #}
 
                 <section class="col-12 title pt-4">
-                    <h1 class="text-center mb-4">Détail d'une fleur</h1>
+                    <h1 class="text-center mb-4">Détail de la fleur {{ flower.name }}</h1>
                 </section>
 
                 {# Article #}
 
                 <section class="col-12 article d-flex justify-content-center my-5 pb-4">
+                    {# Card #}
                     <div class="card flower-article m-3">
                         <div class="row no-gutters">
                             <div class="col-4">
-                                <img src="{{ asset('assets/img/photos/mimosa-hiver.png') }}" alt="{{ flower.name }}" class="img-article rounded-left">
+                                <img src="{{ asset('assets/img/photos/' ~ flower.image) }}" alt="{{ flower.name }}" class="img-article rounded-left">
                             </div>
                             <div class="col-8">
                                 <div class="card-body">
                                     {# Badge isNew #}
                                     {% if(flower.isNew) %}
-                                        <h3><span class="badge badge-danger p-2">Nouveau</span></h3>
+                                        <h2><span class="badge badge-danger p-2">Nouveau</span></h2>
                                     {% else %}
                                         <span class="badge flower-badge">Ancien</span>
                                     {% endif %}
                                     {# Title #}
                                     <h2 class="card-title title-article my-4">
-                                        {{ flower.name }}</a>
+                                        {{ flower.name }}
                                     </h2>
                                     {# Price & Reduced price #}
                                     {% if(flower.discount) %}

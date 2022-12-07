@@ -49,3 +49,19 @@
 .flower-badge {
     color: #7A9E7E;
 }
+
+
+/****************************************************************************/
+/*          Media queries           */
+/****************************************************************************/
+
+@media screen and (min-device-width: 280px) and (max-device-width: 768px) {
+
+    flower-article {
+        width:16rem;
+    }
+    .img-article {
+        width: 7rem;
+    }
+
+}
