@@ -4,8 +4,13 @@
     <link rel="stylesheet" href="{{ asset('assets/css/adminForm.css') }}">
 {% endblock css %}
 
+
 {% block title %}
-    Modification d'une fleur
+    {% if isUpdated %}
+        Modification de la fleur {{ flower.name }}
+    {% else %}
+        Ajout d'une fleur
+    {% endif %}
 {% endblock %}
 
 
@@ -17,7 +22,11 @@
                 {#  Title #}
 
                 <section class="col-12 title pt-4">
+                {% if isUpdated %}
                     <h1 class="text-center mb-4">Modification de la fleur {{ flower.name }}</h1>
+                {% else %}
+                    <h1 class="text-center mb-4">Ajout d'une fleur</h1>
+                {% endif %}
                 </section>
 
                 {#  Cart Table #}
@@ -41,7 +50,6 @@
                                 </div>
                             </div>
 
-
                             <div class="col-12">
                                 <div class="row d-flex align-items-center mt-2">
                                     <div class="col-12 col-md-4">
@@ -57,7 +65,7 @@
                             </div>
 
                             <div class="col-12 col-md-8 mt-2">
-                                {{ form_row(form.content, {'attr': {'rows': '3'}, 'label': 'Description: '}) }}
+                                {{ form_row(form.content, {'label': 'Description: ', 'attr': {'rows': '3'}}) }}
                             </div>
                             <div class="col-12 col-md-4 mt-2">
                                 {{ form_row(form.categories, {'label': 'Catégorie: '}) }}
