@@ -71,7 +71,7 @@
                                 {# Update button #}
                                 <td>
                                     <div class="d-flex justify-content-center align-items-center">
-                                        <a class="btn custom-btn mr-2" href="">
+                                        <a class="btn custom-btn mr-2" href="{{ path('app_admin_update_flower', {'id': flower.id }) }}">
                                             <img src="{{ asset('assets/img/icons/update.svg') }}" alt="modifier la fleur" style="width: 20px;">
                                         </a>
                                         {# Delete button #}

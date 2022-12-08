@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/adminForm.css') }}">
+{% endblock css %}
+
+{% block title %}
+    Modification d'une fleur
+{% endblock %}
+
+
+{% block main %}
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center">
+
+                {#  Title #}
+
+                <section class="col-12 title pt-4">
+                    <h1 class="text-center mb-4">Modification de la fleur {{ flower.name }}</h1>
+                </section>
+
+                {#  Cart Table #}
+
+                <section class="col-10 col-md-8 col-lg-6 form-bg p-5 mt-3 mb-5">
+
+                    {{ form_start(form) }}
+
+                        <div class="row mb-4">
+                                <div class="col-12">
+                                    <div class="row d-flex align-items-center">
+                                    <div class="col-12 col-md-5">
+                                        {{ form_row(form.name, {'label': 'Nom: '}) }}
+                                    </div>
+                                    <div class="col-12 col-md-5">
+                                        {{ form_row(form.image, {'label': 'Image: '}) }}
+                                    </div>
+                                    <div class="col-2">
+                                        <img class="rounded" src="{{ asset('assets/img/photos/' ~ flower.image) }}" alt="{{ flower.name }}" style="width: 50px">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-12">
+                                <div class="row d-flex align-items-center mt-2">
+                                    <div class="col-12 col-md-4">
+                                        {{ form_row(form.price, {'label': 'Prix: '}) }}
+                                    </div>
+                                    <div class="col-12 col-md-4">
+                                        {{ form_row(form.discount, {'label': 'Promotion: '}) }}
+                                    </div>
+                                    <div class="col-12 col-md-4 mt-4">
+                                        {{ form_row(form.isNew, {'label': 'Nouveau'}) }}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-8 mt-2">
+                                {{ form_row(form.content, {'attr': {'rows': '3'}, 'label': 'Description: '}) }}
+                            </div>
+                            <div class="col-12 col-md-4 mt-2">
+                                {{ form_row(form.categories, {'label': 'Catégorie: '}) }}
+                            </div>
+                        </div>
+
+                        {{ form_rest(form) }}
+
+                        <div class="col-12 d-flex justify-content-center mt-5">
+                            <input type="submit" class="btn custom-btn text-white" value="Enregistrer">
+                        </div>
+                        {{ form_end(form) }}
+
+                </section>
+
+
+
+
+            </div>
+        </div>
+    </div>
+{% endblock main %}
