@@ -39,7 +39,7 @@ class AdminFlowerController extends AbstractController
      * @return Response
      */
     #[Route('/admin/flower/create', name: 'app_admin_create_flower')]
-    #[Route('/admin/flower/{id}', name: 'app_admin_update_flower')]
+    #[Route('/admin/flower/{id}', name: 'app_admin_update_flower', methods: 'GET|POST')]
     public function createOrUpdate(?Flower $flower, Request $request, ManagerRegistry $managerRegistry): Response
     {
         if(!$flower) {
@@ -61,10 +61,22 @@ class AdminFlowerController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/flower/{id}', name: 'app_admin_delete_flower')]
-    public function delete(?Flower $flower, Request $request, ManagerRegistry $managerRegistry): Response
+    /**
+     * Delete a flower
+     *
+     * @param Flower $flower
+     * @param Request $request
+     * @param ManagerRegistry $managerRegistry
+     * @return Response
+     */
+    #[Route('/admin/flower/{id}', name: 'app_admin_delete_flower', methods: 'DELETE')]
+    public function delete(Flower $flower, Request $request, ManagerRegistry $managerRegistry): Response
     {
-
+        if($this->isCsrfTokenValid('REMOVE'.$flower->getId(), $request->get('_token'))) {
+            $managerRegistry->getManager()->remove($flower);
+            $managerRegistry->getManager()->flush();
+            return $this->redirectToRoute('app_admin_flower');
+        }
     }
 
 }

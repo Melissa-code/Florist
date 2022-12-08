@@ -75,7 +75,9 @@
                                             <img src="{{ asset('assets/img/icons/update.svg') }}" alt="modifier la fleur" style="width: 20px;">
                                         </a>
                                         {# Delete button #}
-                                        <form>
+                                        <form method="POST" action="{{ path('app_admin_delete_flower', {'id': flower.id }) }}" onsubmit="return confirm('Confirmez-vous la suppression de cette fleur ?')">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('REMOVE' ~ flower.id) }}">
                                             <button type="submit" class="btn custom-btn" value="Supprimer">
                                                 <img src="{{ asset('assets/img/icons/delete.svg') }}" alt="supprimer la fleur" style="width: 20px;">
                                             </button>
