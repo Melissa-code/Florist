@@ -1,12 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block css %}
-    <link rel="stylesheet" href="{{ asset('assets/css/cart.css') }}">
-{% endblock css %}
+{% block css %}<link rel="stylesheet" href="{{ asset('assets/css/cart.css') }}">{% endblock css %}
 
-{% block title %}
-    Gestion des fleurs
-{% endblock %}
+{% block title %}Gestion des fleurs{% endblock %}
 
 
 {% block main %}
@@ -20,11 +16,22 @@
                     <h1 class="text-center mb-4">Gestion des fleurs</h1>
                 </section>
 
-                {#  Cart Table #}
+                {# Flash message : success or error #}
+
+                <section class="col-12 col-md-8 col-lg-6 d-flex justify-content-center">
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-dismissible alert-success">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </section>
+
+                {# Flowers Managing Table #}
 
                 <section class="col-md-10 ">
 
-                    {#  Add Button #}
+                    {# Add Button #}
 
                     <div class="d-flex justify-content-center py-4">
                         <a class="btn custom-btn mr-2 d-flex justify-content-center align-items-center" href="{{ path('app_admin_create_flower') }}">

@@ -49,8 +49,10 @@ class AdminFlowerController extends AbstractController
         $form = $this->createForm(FlowerType::class, $flower);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()) {
+            $isUpdated = $flower->getId() !== null;
             $managerRegistry->getManager()->persist($flower);
             $managerRegistry->getManager()->flush();
+            $this->addFlash("success", ($isUpdated) ? "La modification a bien été effectuée." : "L'ajout a bien été effectué.");
             return $this->redirectToRoute('app_admin_flower');
         }
 
@@ -75,6 +77,7 @@ class AdminFlowerController extends AbstractController
         if($this->isCsrfTokenValid('REMOVE'.$flower->getId(), $request->get('_token'))) {
             $managerRegistry->getManager()->remove($flower);
             $managerRegistry->getManager()->flush();
+            $this->addFlash("success", "La suppression a bien été effectuée.");
             return $this->redirectToRoute('app_admin_flower');
         }
     }
