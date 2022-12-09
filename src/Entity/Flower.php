@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: FlowerRepository::class)]
 class Flower
@@ -17,27 +18,35 @@ class Flower
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\Length(min: 3, max: 50, minMessage: 'Le nom doit comporter au minimum {{ limit }} caractères', maxMessage: 'Le nom doit comporter au maximum {{ limit }} caractères',)]
+    #[Assert\NotBlank]
     private ?string $name = null;
 
     #[ORM\Column]
+    #[Assert\Range(notInRangeMessage: 'Le prix doit être compris entre {{ min }} et {{ max }} €', min: 0.1, max: 2000,)]
+    #[Assert\NotBlank]
     private ?float $price = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $content = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank]
     private ?bool $isNew = null;
 
     #[ORM\ManyToOne(inversedBy: 'flowers')]
     private ?Discount $discount = null;
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'flowers')]
+    #[Assert\NotBlank]
     private Collection $categories;
 
     #[ORM\OneToMany(mappedBy: 'flower', targetEntity: CartFlower::class)]
     private Collection $cartFlowers;
 
     #[ORM\Column(length: 100)]
+    #[Assert\Length(min: 3, max: 100, minMessage: 'L\'image doit comporter au minimum {{ limit }} caractères', maxMessage: 'L\'image doit comporter au maximum {{ limit }} caractères',)]
+    #[Assert\NotBlank]
     private ?string $image = null;
 
     public function __construct()

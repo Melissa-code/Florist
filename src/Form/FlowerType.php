@@ -18,11 +18,11 @@ class FlowerType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('price', TextType::class)
-            ->add('content', TextareaType::class)
+            ->add('name')
+            ->add('price')
+            ->add('content')
             ->add('isNew')
-            ->add('image', TextType::class)
+            ->add('image')
             ->add('discount', EntityType::class, [
                 'class' => Discount::class,
                 'choice_label' => 'value'

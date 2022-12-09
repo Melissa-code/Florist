@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: DiscountRepository::class)]
 class Discount
@@ -17,12 +18,18 @@ class Discount
     private ?int $id = null;
 
     #[ORM\Column]
+    #[Assert\Range(notInRangeMessage: 'La promotion doit être comprise entre {{ min }} et {{ max }}', min: 0.1, max: 0.9,)]
+    #[Assert\NotBlank]
     private ?float $value = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\Date]
+    #[Assert\NotBlank]
     private ?\DateTimeInterface $start = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\Date]
+    #[Assert\NotBlank]
     private ?\DateTimeInterface $end = null;
 
     #[ORM\OneToMany(mappedBy: 'discount', targetEntity: Flower::class)]
