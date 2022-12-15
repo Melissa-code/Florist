@@ -14,3 +14,7 @@
 .custom-border {
     border: 2px solid #7A9E7E;
 }
+
+.custom-table {
+    height: 75vh;
+}
