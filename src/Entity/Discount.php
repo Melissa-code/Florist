@@ -23,13 +23,11 @@ class Discount
     private ?float $value = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    #[Assert\Date]
-    #[Assert\NotNull]
+    //#[Assert\Date]
     private ?\DateTimeInterface $start = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    #[Assert\Date]
-    #[Assert\NotNull]
+    //#[Assert\Date]
     private ?\DateTimeInterface $end = null;
 
     #[ORM\OneToMany(mappedBy: 'discount', targetEntity: Flower::class)]

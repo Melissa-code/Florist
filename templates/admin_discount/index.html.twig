@@ -56,13 +56,13 @@
                             <tr class="table text-center">
                                 <td>{{ discount.id }}</td>
                                 <td>{{ discount.value }}</td>
-                                <td>{{ discount.start|date("m/d/Y") }}</td>
-                                <td>{{ discount.end|date("m/d/Y") }}</td>
+                                <td>{{ discount.start|date("d/m/Y") }}</td>
+                                <td>{{ discount.end|date("d/m/Y") }}</td>
 
                                 {# Update button #}
                                 <td>
                                     <div class="d-flex justify-content-center align-items-center">
-                                        <a class="btn custom-btn mr-2" href="">
+                                        <a class="btn custom-btn mr-2" href="{{ path('app_update_discount', {'id': discount.id}) }}">
                                             <img src="{{ asset('assets/img/icons/update.svg') }}" alt="modifier la promotion" style="width: 20px;">
                                         </a>
 

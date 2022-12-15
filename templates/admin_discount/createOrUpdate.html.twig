@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/adminForm.css') }}">
+{% endblock css %}
+
+
+{% block title %}
+    {% if isUpdated %}
+        Modification de la promotion n° {{ discount.id }}
+    {% else %}
+        Ajout d'une promotion
+    {% endif %}
+{% endblock %}
+
+
+{% block main %}
+    <div class="row">
+        <div class="container-fluid form-custom">
+            <div class="row d-flex h-75 justify-content-center align-self-center">
+
+                {# Title #}
+
+                <section class="col-12 text-center title my-4">
+                    {% if isUpdated %}
+                        <h1>Modification de la promotion n° {{ discount.id }}</h1>
+                    {% else %}
+                        <h1>Ajout d'une promotion</h1>
+                    {% endif %}
+                </section>
+
+                {# Promotion form #}
+
+                <section class="col-10 col-md-8 col-lg-6 form-bg p-5 d-block my-auto">
+
+                    {{ form_start(form) }}
+
+                    <div class="row mb-4">
+                        <div class="col-12 d-flex justify-content-center">
+                            {{ form_row(form.value) }}
+                        </div>
+                        <div class="col-12 d-flex justify-content-center">
+                            {{ form_row(form.start) }}
+                        </div>
+                        <div class="col-12 d-flex justify-content-center">
+                            {{ form_row(form.end) }}
+                        </div>
+                    </div>
+
+                    {{ form_rest(form) }}
+
+                    <div class="col-12 d-flex justify-content-center mt-5">
+                        <input type="submit" class="btn custom-btn text-white" value="Enregistrer">
+                    </div>
+
+                    {{ form_end(form) }}
+
+                </section>
+
+            </div>
+        </div>
+    </div>
+{% endblock main %}
