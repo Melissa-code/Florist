@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: FlowerRepository::class)]
@@ -24,30 +25,30 @@ class Flower
 
     #[ORM\Column]
     #[Assert\Range(notInRangeMessage: 'Le prix doit être compris entre {{ min }} et {{ max }} €', min: 0.1, max: 2000,)]
-    #[Assert\NotBlank]
+    #[Assert\NotNull]
     private ?float $price = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $content = null;
 
     #[ORM\Column]
-    #[Assert\NotBlank]
     private ?bool $isNew = null;
 
     #[ORM\ManyToOne(inversedBy: 'flowers')]
     private ?Discount $discount = null;
 
     #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'flowers')]
-    #[Assert\NotBlank]
+    #[Assert\NotNull]
     private Collection $categories;
 
     #[ORM\OneToMany(mappedBy: 'flower', targetEntity: CartFlower::class)]
     private Collection $cartFlowers;
 
     #[ORM\Column(length: 100)]
-    #[Assert\Length(min: 3, max: 100, minMessage: 'L\'image doit comporter au minimum {{ limit }} caractères', maxMessage: 'L\'image doit comporter au maximum {{ limit }} caractères',)]
-    #[Assert\NotBlank]
     private ?string $image = null;
+
+    private ?File $imageFile = null;
+
 
     public function __construct()
     {
@@ -120,6 +121,31 @@ class Flower
         return $this;
     }
 
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageFile(?File $imageFile): self
+    {
+        $this->imageFile = $imageFile;
+
+        return $this;
+    }
+
+
     /**
      * @return Collection<int, Category>
      */
@@ -170,19 +196,8 @@ class Flower
                 $cartFlower->setFlower(null);
             }
         }
-
         return $this;
     }
 
-    public function getImage(): ?string
-    {
-        return $this->image;
-    }
 
-    public function setImage(string $image): self
-    {
-        $this->image = $image;
-
-        return $this;
-    }
 }

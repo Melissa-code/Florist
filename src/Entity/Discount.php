@@ -19,17 +19,17 @@ class Discount
 
     #[ORM\Column]
     #[Assert\Range(notInRangeMessage: 'La promotion doit être comprise entre {{ min }} et {{ max }}', min: 0.1, max: 0.9,)]
-    #[Assert\NotBlank]
+    #[Assert\NotNull]
     private ?float $value = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     #[Assert\Date]
-    #[Assert\NotBlank]
+    #[Assert\NotNull]
     private ?\DateTimeInterface $start = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     #[Assert\Date]
-    #[Assert\NotBlank]
+    #[Assert\NotNull]
     private ?\DateTimeInterface $end = null;
 
     #[ORM\OneToMany(mappedBy: 'discount', targetEntity: Flower::class)]
