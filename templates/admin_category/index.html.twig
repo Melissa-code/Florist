@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}<link rel="stylesheet" href="{{ asset('assets/css/cart.css') }}">{% endblock css %}
+
+{% block title %}Gestion des catégories{% endblock %}
+
+
+{% block main %}
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center">
+
+                {#  Title #}
+
+                <section class="col-12 title pt-4">
+                    <h1 class="text-center mb-4">Gestion des catégories</h1>
+                </section>
+
+                {# Flash message : success or error #}
+
+                <section class="col-12 col-md-8 col-lg-6 d-flex justify-content-center">
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-dismissible alert-success">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </section>
+
+                {# Categories Managing Table #}
+
+                <section class="col-11 col-md-10">
+
+                    {# Add Button #}
+
+                    <div class="d-flex justify-content-center py-4">
+                        <a class="btn custom-btn mr-2 d-flex justify-content-center align-items-center" href="{{ path('app_admin_create_flower') }}">
+                            <img src="{{ asset('assets/img/icons/add.svg') }}" alt="Ajouter une fleur" style="width: 20px;">
+                            <span class="text-white ml-2">Ajouter une catégorie</span>
+                        </a>
+                    </div>
+
+                    <table class="table table-striped custom-border">
+                        <thead class="custom-thead">
+                        <tr>
+                            <th scope="col" class="text-center">Identifiant</th>
+                            <th scope="col" class="text-center">Nom</th>
+                            <th scope="col" class="text-center">Action</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        {% for category in categories %}
+                            <tr class="table text-center">
+                                <td>{{ category.id }}</td>
+                                <td>{{ category.name }}</td>
+
+                                {# Update button #}
+                                <td>
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <a class="btn custom-btn mr-2" href="{{ path('app_update_category', {'id': category.id }) }}">
+                                            <img src="{{ asset('assets/img/icons/update.svg') }}" alt="modifier la catégorie" style="width: 20px;">
+                                        </a>
+                                        {# Delete button #}
+                                        <form method="POST" action="" onsubmit="return confirm('Confirmez-vous la suppression de cette fleur ?')">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <input type="hidden" name="_token" value="">
+                                            <button type="submit" class="btn custom-btn" value="Supprimer">
+                                                <img src="{{ asset('assets/img/icons/delete.svg') }}" alt="supprimer la catégorie" style="width: 20px;">
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+
+                </section>
+
+
+                {# Pagination  #}
+
+                <section class="col-12 pagination justify-content-center align-items-center pt-5 pb-2">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end">
+                            <li class="page-item">
+                                <a class="page-link" href="#">Préc.</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Suiv.</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </section>
+
+            </div>
+        </div>
+    </div>
+{% endblock main %}

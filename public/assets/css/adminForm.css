@@ -5,3 +5,7 @@
 label {
     font-weight: bolder;
 }
+
+.form-custom {
+    height: 75vh;
+}
