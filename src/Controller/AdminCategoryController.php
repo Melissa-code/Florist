@@ -31,23 +31,23 @@ class AdminCategoryController extends AbstractController
     }
 
     /**
-     * Update a category
+     * Create or Update a category
      *
-     * @param Category $category
+     * @param Category|null $category
      * @param Request $request
      * @param ManagerRegistry $managerRegistry
      * @return Response
      */
+    #[Route('/admin/category/create', name: 'app_create_category', methods: 'GET|POST')]
     #[Route('/admin/category/{id}', name: 'app_update_category', methods: 'GET|POST')]
-    public function updateOrCreate(Category $category, Request $request, ManagerRegistry $managerRegistry): Response
+    public function updateOrCreate(?Category $category, Request $request, ManagerRegistry $managerRegistry): Response
     {
         if(!$category) {
             $category = new Category();
         }
-        //$isUpdated = $category->getId() !== null;
+
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
-
         if($form->isSubmitted() && $form->isValid()){
             $managerRegistry->getManager()->persist($category);
             $managerRegistry->getManager()->flush();
