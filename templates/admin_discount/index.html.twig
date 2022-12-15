@@ -67,9 +67,9 @@
                                         </a>
 
                                         {# Delete button #}
-                                        <form method="POST" action="" onsubmit="return confirm('Confirmez-vous la suppression de cette promotion ?')">
+                                        <form method="POST" action="{{ path('app_delete_discount', {'id': discount.id }) }}" onsubmit="return confirm('Confirmez-vous la suppression de cette promotion ?')">
                                             <input type="hidden" name="_method" value="DELETE">
-                                            <input type="hidden" name="_token" value="">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('REMOVE' ~ discount.id) }}">
                                             <button type="submit" class="btn custom-btn" value="Supprimer">
                                                 <img src="{{ asset('assets/img/icons/delete.svg') }}" alt="supprimer la promotion" style="width: 20px;">
                                             </button>

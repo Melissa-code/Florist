@@ -63,5 +63,23 @@ class AdminDiscountController extends AbstractController
         ]);
     }
 
+    /**
+     * Delete a discount
+     *
+     * @param Discount $discount
+     * @param Request $request
+     * @param ManagerRegistry $managerRegistry
+     * @return Response
+     */
+    #[Route('/admin/discount/{id}', name: 'app_delete_discount', methods: 'DELETE')]
+    public function delete(Discount $discount, Request $request, ManagerRegistry $managerRegistry): Response
+    {
+        if($this->isCsrfTokenValid('REMOVE'.$discount->getId(), $request->get('_token'))) {
+            $managerRegistry->getManager()->remove($discount);
+            $managerRegistry->getManager()->flush();
+            $this->addFlash("success", "La suppression a bien été effectuée.");
+            return $this->redirectToRoute('app_admin_discount');
+        }
+    }
 
 }
