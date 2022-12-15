@@ -45,12 +45,14 @@ class AdminCategoryController extends AbstractController
         if(!$category) {
             $category = new Category();
         }
+        $isUpdated = $category->getId() !== null;
 
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $managerRegistry->getManager()->persist($category);
             $managerRegistry->getManager()->flush();
+            $this->addFlash("success", ($isUpdated) ? "La modification a bien été effectuée." : "L'ajout a bien été effectué.");
             return $this->redirectToRoute('app_admin_category');
         }
 
@@ -60,5 +62,25 @@ class AdminCategoryController extends AbstractController
             'isUpdated' => $category->getId() !== null
         ]);
     }
+
+    /**
+     * Delete a category
+     *
+     * @param Category $category
+     * @param Request $request
+     * @param ManagerRegistry $managerRegistry
+     * @return Response
+     */
+    #[Route('/admin/category/{id}', name: 'app_delete_category', methods: 'DELETE')]
+    public function delete(Category $category, Request $request, ManagerRegistry $managerRegistry): Response
+    {
+        if($this->isCsrfTokenValid('REMOVE'.$category->getId(), $request->get('_token'))) {
+            $managerRegistry->getManager()->remove($category);
+            $managerRegistry->getManager()->flush();
+            $this->addFlash('success', 'La suppression a bien été effectuée.');
+            return $this->redirectToRoute('app_admin_category');
+        }
+    }
+
 
 }

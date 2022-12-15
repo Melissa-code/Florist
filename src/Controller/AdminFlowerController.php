@@ -108,7 +108,7 @@ class AdminFlowerController extends AbstractController
     #[Route('/admin/flower/{id}', name: 'app_admin_delete_flower', methods: 'DELETE')]
     public function delete(Flower $flower, Request $request, ManagerRegistry $managerRegistry): Response
     {
-        $image = $this->getParameter('directory_images_flowers').'/'. $flower->getImage();
+        $image = $this->getParameter('directory_images_flowers').'/'.$flower->getImage();
 
         if($this->isCsrfTokenValid('REMOVE'.$flower->getId(), $request->get('_token'))) {
             // Delete a flower in the database
