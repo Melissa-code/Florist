@@ -29,18 +29,30 @@ class AdminDiscountController extends AbstractController
         ]);
     }
 
-
+    /**
+     * Create or update a discount
+     *
+     * @param Discount|null $discount
+     * @param Request $request
+     * @param ManagerRegistry $managerRegistry
+     * @return Response
+     */
+    #[Route('/admin/discount/create', name: 'app_create_discount', methods: 'POST|GET')]
     #[Route('/admin/discount/{id}', name: 'app_update_discount', methods: 'POST|GET')]
-    public function createOrUpdate(Discount $discount, Request $request, ManagerRegistry $managerRegistry): Response
+    public function createOrUpdate(?Discount $discount, Request $request, ManagerRegistry $managerRegistry): Response
     {
+        if ($discount == null) {
+            $discount = new Discount();
+        }
 
         $form = $this->createForm(DiscountType::class, $discount);
         $form->handleRequest($request);
 
+        $isUpdated = $discount->getId() !== null;
         if($form->isSubmitted() && $form->isValid()) {
             $managerRegistry->getManager()->persist($discount);
             $managerRegistry->getManager()->flush();
-            $this->addFlash("success", "La modification a bien été effectuée.");
+            $this->addFlash( "success", ($isUpdated) ? "La modification a bien été effectuée." :  "L'ajout a bien été effectué.");
             return $this->redirectToRoute('app_admin_discount');
         }
 
