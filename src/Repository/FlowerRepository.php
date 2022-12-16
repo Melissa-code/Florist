@@ -39,7 +39,6 @@ class FlowerRepository extends ServiceEntityRepository
         }
     }
 
-
     /**
     * @return Flower[] Returns an array of Flower objects in alphabetical order
     */
@@ -50,6 +49,21 @@ class FlowerRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    /**
+     * @param string $search
+     * @return array Returns an array of Flower objects : results in the DB of the search
+     */
+    public function searchFlower(string $search): array
+    {
+        $db = $this->createQueryBuilder('flower');
+
+        $query = $db->select('flower')
+            ->where('flower.name LIKE :search')
+            ->setParameter('search', '%'.$search.'%')
+            ->getQuery();
+        return $query->getResult();
     }
 
 

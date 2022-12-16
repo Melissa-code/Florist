@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/shop.css') }}">
+{% endblock css %}
+
+{% block title %}
+    Résultats de la recherche
+{% endblock %}
+
+
+{% block main %}
+
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row">
+
+                {#  Title #}
+
+                <section class="col-12 title py-4">
+                    <h1 class="text-center mb-4">Résultats de la recherche</h1>
+                </section>
+
+                {#  Search #}
+
+                <section class="col-12 search d-flex justify-content-center align-items-center flex-wrap">
+                    <form class="d-flex mr-5">
+                        <div class="form-group mr-3">
+                            <input type="text" class="form-control" id="search-flower" placeholder="Rechercher une fleur" style="width: 300px;">
+                        </div>
+                    </form>
+
+                    <form class="d-flex ">
+                        <div class="form-group mr-2">
+                            <select class="form-control" id="categorySelect">
+                                <option>--  Sélectionner une saison  --</option>
+                                <option>Printemps</option>
+                                <option>Eté</option>
+                                <option>Automne</option>
+                                <option>Hiver</option>
+                            </select>
+                        </div>
+                        <div>
+                            <button type="button" class="btn custom-btn text-white" >Rechercher</button>
+                        </div>
+                    </form>
+                </section>
+
+                {# Results list #}
+                <section class="col-12 p-4 list">
+                    <article class="d-flex flex-wrap justify-content-center pb-5 mt-5" id="flowers-list" >
+
+                        {% for flower in flowers  %}
+                            <div class="card flower-card m-3">
+                                <div class="row no-gutters">
+                                    <div class="col-4">
+                                        <img src="{{ asset('assets/img/photos/' ~ flower.image) }}" alt="{{ flower.name }}" class="flower-img-card rounded-left">
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="card-body">
+                                            {% if(flower.isNew) %}
+                                                <span class="badge badge-danger">Nouveau</span>
+                                            {% else %}
+                                                <span class="badge text-white">Ancien</span>
+                                            {% endif %}
+                                            <h3 class="card-title">
+                                                <a class="detail-link" href="{{ path('app_shop_article', {'id':flower.id}) }}">{{ flower.name }}</a>
+                                            </h3>
+                                            {% if(flower.discount) %}
+                                                <p class="card-text my-1 strikethrough-text">{{ flower.price }} €</p>
+                                                <p class="card-text font-weight-bolder">En promotion: {{ flower.price - (flower.price * flower.discount.value) }} €</p>
+                                            {% else %}
+                                                <p class="card-text my-1">{{ flower.price }} €</p>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </article>
+
+                    {# Pagination  #}
+
+                    <nav aria-label="Page navigation example mt-5">
+                        <ul class="pagination justify-content-center">
+                            <li class="page-item"><a class="page-link" href="#">Préc.</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Suiv.</a></li>
+                        </ul>
+                    </nav>
+
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock main %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/shop.js') }}"></script>
+{% endblock %}

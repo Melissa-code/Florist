@@ -20,12 +20,10 @@ class Flower
 
     #[ORM\Column(length: 50)]
     #[Assert\Length(min: 3, max: 50, minMessage: 'Le nom doit comporter au minimum {{ limit }} caractères', maxMessage: 'Le nom doit comporter au maximum {{ limit }} caractères',)]
-    #[Assert\NotBlank]
     private ?string $name = null;
 
     #[ORM\Column]
     #[Assert\Range(notInRangeMessage: 'Le prix doit être compris entre {{ min }} et {{ max }} €', min: 0.1, max: 2000,)]
-    #[Assert\NotNull]
     private ?float $price = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
