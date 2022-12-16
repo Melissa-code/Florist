@@ -44,7 +44,7 @@ class ShopController extends AbstractController
     }
 
     /**
-     * Search a flower in the navbar
+     * Search a flower via the searchbar in the navbar
      *
      * @param Request $request
      * @return Response
@@ -62,19 +62,53 @@ class ShopController extends AbstractController
     }
 
     /**
-     * Display the Flower results of the serach in the searchbar
+     * Display the Flower results of the search via the searchbar
      *
      * @param $search
      * @param FlowerRepository $flowerRepository
      * @return Response
      */
     #[Route('/search-flower/{search}', name:'app_results_flowers')]
-    public function results($search, FlowerRepository $flowerRepository)
+    public function resultFlower($search, FlowerRepository $flowerRepository): Response
     {
         $flowersResult = $flowerRepository->searchFlower($search);
 
         return $this->render("shop/result_flowers.html.twig", [
             'flowers' => $flowersResult
+        ]);
+    }
+
+    /**
+     * Select a category via the select
+     *
+     * @param Request $request
+     * @return Response
+     */
+    #[Route('/selectCategory', name:'app_select_category')]
+    public function selectCategory(Request $request): Response
+    {
+        $categorySelected = $request->query->get("categorySelected");
+
+        return $this->redirectToRoute("app_results_category", [
+            'categorySelected' => $categorySelected
+        ]);
+    }
+
+    /**
+     * Display the Flower results of the search via the category select
+     *
+     * @param $categorySelected
+     * @param FlowerRepository $flowerRepository
+     * @return Response
+     */
+    #[Route('/select-category/{categorySelected}', name:'app_results_category')]
+    public function resultCategory($categorySelected, FlowerRepository $flowerRepository): Response
+    {
+        //$flowers = $flowerRepository->findByCategories[]($categorySelected);
+        $flowers = $flowerRepository->selectCategory($categorySelected);
+
+        return $this->render("shop/result_flowers.html.twig", [
+            'flowers' => $flowers
         ]);
     }
 }

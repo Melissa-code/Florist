@@ -53,7 +53,7 @@ class FlowerRepository extends ServiceEntityRepository
 
     /**
      * @param string $search
-     * @return array Returns an array of Flower objects : results in the DB of the search
+     * @return array of Flower objects : results in the DB of the search via the searchbar
      */
     public function searchFlower(string $search): array
     {
@@ -65,6 +65,22 @@ class FlowerRepository extends ServiceEntityRepository
             ->getQuery();
         return $query->getResult();
     }
+
+    /**
+     * @param string $categorySelected
+     * @return array of Flower objects : results in the DB of the search via the select
+     */
+    public function selectCategory(string $categorySelected): array
+    {
+        return $this->getEntityManager()->createQuery(
+            'SELECT f FROM App\Entity\Flower f
+                JOIN f.categories c
+                WHERE c.name = :category'
+            )
+            ->setParameter('category', $categorySelected)
+            ->getResult() ;
+    }
+
 
 
 //    /**

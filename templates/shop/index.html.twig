@@ -30,9 +30,9 @@
                         </div>
                     </form>
 
-                    <form class="d-flex ">
+                    <form class="d-flex" action="{{ path('app_select_category') }}">
                         <div class="form-group mr-2">
-                            <select class="form-control" id="categorySelect">
+                            <select class="form-control" id="categorySelect" name="categorySelected">
                                 <option>--  Sélectionner une saison  --</option>
                                 <option>Printemps</option>
                                 <option>Eté</option>
@@ -41,7 +41,7 @@
                             </select>
                         </div>
                         <div>
-                            <button type="button" class="btn custom-btn text-white" >Rechercher</button>
+                            <button type="submit" class="btn custom-btn text-white">Rechercher</button>
                         </div>
                     </form>
                 </section>
