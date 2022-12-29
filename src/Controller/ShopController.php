@@ -104,7 +104,6 @@ class ShopController extends AbstractController
     #[Route('/select-category/{categorySelected}', name:'app_results_category')]
     public function resultCategory($categorySelected, FlowerRepository $flowerRepository): Response
     {
-        //$flowers = $flowerRepository->findByCategories[]($categorySelected);
         $flowers = $flowerRepository->selectCategory($categorySelected);
 
         return $this->render("shop/result_flowers.html.twig", [

@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
+{% endblock css %}
+
+{% block title %}Inscription{% endblock %}
+
+
+{% block main %}
+
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row ">
+
+                {#  Title #}
+
+                <section class="col-12 title pt-4">
+                    <h1 class="text-center mb-4">Inscription</h1>
+                </section>
+
+                {# Sign up form #}
+
+                <section class="col-12 py-4 text-white login py-5">
+                    <div class="row d-flex justify-content-center py-3">
+                        <div class="col-9 col-md-6 login-form p-4">
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-11 col-md-8">
+
+                                    {{ form_start(form) }}
+
+                                    <div class="row mb-4">
+                                        <div class="col-12 d-flex justify-content-center">
+                                            {{ form_row(form.name) }}
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-center">
+                                            {{ form_row(form.firstname) }}
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-center">
+                                            {{ form_row(form.phone) }}
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-center">
+                                            {{ form_row(form.birthday) }}
+                                        </div>
+
+                                        <div class="col-12 d-flex justify-content-center">
+                                            {{ form_row(form.email) }}
+                                        </div>
+                                        <div class="col-12 d-flex justify-content-center">
+                                            {{ form_row(form.password) }}
+                                        </div>
+
+                                    </div>
+
+
+
+                                    <div class="col-12 d-flex justify-content-center mt-5">
+                                        <input type="submit" class="btn custom-btn text-white" value="S'inscrire">
+                                    </div>
+
+                                    {{ form_end(form) }}
+{#                                    <form action="" method="post" >#}
+{#                                        <div class="">#}
+
+{#                                            <div class="form-group">#}
+{#                                                <label for="email">Email :</label>#}
+{#                                                <input type="email" class="form-control" id="email" aria-describedby="email" placeholder="Ex: jeandupont@gmail.com">#}
+{#                                            </div>#}
+
+{#                                            <div class="form-group">#}
+{#                                                <label for="password">Password :</label>#}
+{#                                                <input type="password" class="form-control" id="password" aria-describedby="password" placeholder="Ex: **************">#}
+{#                                            </div>#}
+
+{#                                            <div class="d-flex justify-content-center my-4">#}
+{#                                                <button type="submit" class="btn btn-dark custom-btn my-4">S'inscrire'</button>#}
+{#                                            </div>#}
+{#                                        </div>#}
+{#                                    </form>#}
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock main %}
