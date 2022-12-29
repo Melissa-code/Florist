@@ -12,9 +12,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
-class LoginController extends AbstractController
+class SignupController extends AbstractController
 {
-
+    /**
+     * Sign up
+     *
+     * @param Request $request
+     * @param ManagerRegistry $managerRegistry
+     * @param UserPasswordHasherInterface $passwordHasher
+     * @return Response
+     */
     #[Route('signup', name: 'app_signup')]
     public function signup(Request $request, ManagerRegistry $managerRegistry, UserPasswordHasherInterface $passwordHasher): Response
     {
@@ -33,7 +40,7 @@ class LoginController extends AbstractController
             $managerRegistry->getManager()->flush();
         }
 
-        return $this->render('login/signup.html.twig', [
+        return $this->render('signup/signup.html.twig', [
             'user' => $user,
             'form'=> $form->createView()
         ]);
@@ -41,10 +48,10 @@ class LoginController extends AbstractController
 
 
 
-    #[Route('login', name: 'app_login')]
-    public function login(): Response
-    {
-        return $this->render('login/login.html.twig');
-    }
+//    #[Route('login', name: 'app_login')]
+//    public function login(): Response
+//    {
+//        return $this->render('signup/login.html.twig');
+//    }
 
 }

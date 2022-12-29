@@ -1,8 +1,7 @@
-.login-form {
+.login-form, .signup-form {
     background-color: #31493C;
 }
 
-.login {
+.login, .signup {
     background-color: #7A9E7E;
-
 }

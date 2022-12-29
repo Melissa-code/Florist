@@ -60,14 +60,20 @@ class SignupType extends AbstractType
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe doivent être identiques',
-                'label' => 'Mot de passe :',
-                'attr' => [
-                    'placeholder'=> 'Saisir votre mot de passe'
-                ],
                 'constraints' => new Length(5, 5, 100),
                 'required' => true,
-                'first_options' => ['label' => 'Mot de passe :'],
-                'second_options' => ['label' => 'Confirmer mot de passe :']
+                'first_options' => [
+                    'label' => 'Mot de passe :',
+                    'attr' => [
+                        'placeholder'=> 'Saisir votre mot de passe'
+                    ],
+                ],
+                'second_options' => [
+                    'label' => 'Confirmer mot de passe :',
+                    'attr' => [
+                        'placeholder'=> 'Confirmer mot de passe'
+                    ],
+                ]
             ])
         ;
     }
