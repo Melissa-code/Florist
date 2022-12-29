@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
 
 class SignupType extends AbstractType
 {
@@ -23,6 +24,7 @@ class SignupType extends AbstractType
                 'attr' => [
                     'placeholder'=> 'Saisir votre prénom'
                 ],
+                'constraints' => new Length(3, 3, 50),
                 'required' => true
             ])
             ->add('name', TextType::class, [
@@ -30,6 +32,7 @@ class SignupType extends AbstractType
                 'attr' => [
                     'placeholder'=> 'Saisir votre nom'
                 ],
+                'constraints' => new Length(3, 3, 50),
                 'required' => true
             ])
             ->add('phone', TelType::class, [
@@ -37,6 +40,7 @@ class SignupType extends AbstractType
                 'attr' => [
                     'placeholder'=> 'Saisir votre n° de téléphone'
                 ],
+                'constraints' => new Length(10, 10, 30),
                 'required' => true
             ])
             ->add('birthday',DateType::class, [
@@ -50,6 +54,7 @@ class SignupType extends AbstractType
                 'attr' => [
                     'placeholder'=> 'Saisir votre email'
                 ],
+                'constraints' => new Length(5, 5, 60),
                 'required' => true
             ])
             ->add('password', RepeatedType::class, [
@@ -59,6 +64,7 @@ class SignupType extends AbstractType
                 'attr' => [
                     'placeholder'=> 'Saisir votre mot de passe'
                 ],
+                'constraints' => new Length(5, 5, 100),
                 'required' => true,
                 'first_options' => ['label' => 'Mot de passe :'],
                 'second_options' => ['label' => 'Confirmer mot de passe :']
