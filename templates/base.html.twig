@@ -21,7 +21,7 @@
                 <div class="container">
                     {# logo #}
                     <div>
-                        <a class="navbar-brand pr-5" href="#">FLORIST</a>
+                        <a class="navbar-brand " href="{{ path('app_home') }}">FLORIST</a>
                     </div>
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,9 +30,6 @@
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a class="nav-link menu-link" href="{{ path('app_home') }}">Accueil</a>
-                            </li>
                             <li class="nav-item">
                                 <a class="nav-link menu-link" href="{{ path('app_shop') }}">Boutique</a>
                             </li>
@@ -48,9 +45,18 @@
                                 <input class="form-control mr-sm-2" type="text" name="search" placeholder="Rechercher une fleur" aria-label="Search">
                                 <button class="btn custom-btn my-2 my-sm-0" type="submit">Rech</button>
                             </form>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
-                            </li>
+                            {% if app.user %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('app_account') }}">Mon compte</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                                </li>
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                                </li>
+                            {% endif %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('app_cart') }}">Panier</a>
                             </li>
