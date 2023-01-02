@@ -12,18 +12,27 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AccountPasswordController extends AbstractController
 {
+    /**
+     * Change the user password
+     *
+     * @param Request $request
+     * @param ManagerRegistry $managerRegistry
+     * @param UserPasswordHasherInterface $passwordHasher
+     * @return Response
+     */
     #[Route('/account/password', name: 'app_account_password')]
-    public function index(Request $request,  ManagerRegistry $managerRegistry, UserPasswordHasherInterface $passwordHasher): Response
+    public function index(Request $request, ManagerRegistry $managerRegistry, UserPasswordHasherInterface $passwordHasher): Response
     {
-        //$notification = null;
-
-        // logged user
+        // Get the logged in user
         $user = $this->getUser();
+
         $form = $this->createForm(ChangePasswordType::class, $user);
 
         $form->handleRequest($request);
+
         if($form->isSubmitted() && $form->isValid()) {
             $old_password = $form->get('old_password')->getData();
+
             // Check if the DB hashed password matches with the old password
             if($passwordHasher->isPasswordValid($user, $old_password)) {
                 $new_password = $form->get('new_password')->getData();
@@ -40,7 +49,6 @@ class AccountPasswordController extends AbstractController
 
         return $this->render('account/password.html.twig', [
             'form' => $form->createView(),
-            //'notification' => $notification
         ]);
     }
 }

@@ -36,6 +36,7 @@ class SignupController extends AbstractController
             // dd($hashedPassword);
             $user->setPassword($hashedPassword);
 
+
             $managerRegistry->getManager()->persist($user);
             $managerRegistry->getManager()->flush();
         }

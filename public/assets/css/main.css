@@ -30,6 +30,14 @@ h3 {
     font-size: 40px;
 }
 
+.dropdown-menu {
+    background-color: #001A23;
+}
+
+.dropdown-item {
+    color: white;
+}
+
 
 /* *********************************************** */
         /* Pagination */
@@ -43,7 +51,6 @@ h3 {
 .page-link {
     color: black;
 }
-
 
 .page-link:hover {
     color: #7A9E7E;
@@ -85,8 +92,10 @@ h3 {
                 /* Footer*/
 /* ********************************************** */
 
-footer {
+.footer-custom {
     background-color: #E8F1F2;
+    bottom: 0;
+    width: 100%;
 }
 
 .footer-link {
