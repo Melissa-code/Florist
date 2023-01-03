@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
+{% endblock css %}
+
+{% block title %} Ajouter une adresse {% endblock %}
+
+
+{% block main %}
+
+    <div class="row">
+        <div class="container-fluid">
+            <div class="row d-flex justify-content-center">
+
+                {#  Title #}
+
+                <section class="col-12 title py-4">
+                    <h1 class="text-center mb-4">Ajouter une adresse</h1>
+                </section>
+
+                <section class="col-12 py-2 text-white address py-5">
+
+                    <div class="row d-flex justify-content-center py-4 h-100">
+
+                        <div class="col-9 col-md-7 col-lg-6 address-form rounded p-4 p-md-5 d-flex justify-content-center align-items-center">
+
+                        {{ form_start(form) }}
+
+                            <div class="row mb-2">
+                                <div class="col-3 col-md-2">
+                                    {{ form_row(form.user) }}
+                                </div>
+                                <div class="col-9 col-md-10">
+                                    {{ form_row(form.name) }}
+                                </div>
+                                <div class="col-12">
+                                    {{ form_row(form.street) }}
+                                </div>
+                                <div class="col-12 col-md-7">
+                                    {{ form_row(form.zipcode) }}
+                                </div>
+                                <div class="col-12 col-md-5">
+                                    {{ form_row(form.country) }}
+                                </div>
+
+                            </div>
+
+                            <div class="col-12 d-flex justify-content-center mt-4">
+                                <a class="btn custom-btn text-white mr-1" href="{{ path('app_account_address') }}">Revenir</a>
+                                <input type="submit" class="btn custom-btn text-white ml-1" value="Enregistrer">
+                            </div>
+
+                        {{ form_end(form) }}
+
+                        </div>
+                    </div>
+
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+
+{% endblock main %}

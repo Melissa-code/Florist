@@ -22,10 +22,10 @@
                 {# Account #}
 
                 <section class="col-12 text-center pt-4">
-                    <p>Bienvenue {{ app.user.firstname }} dans votre compte.</p>
+                    <p><b>Bienvenue {{ app.user.firstname }} dans votre compte.</b></p>
 
-                    <a href="{{ path('app_account_password') }}">Modification du mot de passe </a>
-                    <p>Ajouter mes adresses</p>
+                    <p><a class="detail-link" href="{{ path('app_account_password') }}">Modification du mot de passe </a></p>
+                    <p><a class="detail-link" href="{{ path('app_account_address') }}">Gérer mes adresses </a></p>
                     <p>Mes commandes</p>
 
 
