@@ -54,7 +54,7 @@
                                     <form action="{{ path('app_cart') }}" class="d-flex my-4">
                                         <div class="form-group d-flex my-4">
                                             <input type="number" class="form-control mr-3" id="quantity-input" placeholder="quantité">
-                                            <button type="submit" class="btn custom-btn text-white">Ajouter </button>
+                                            <a class="btn custom-btn text-white" href="{{ path('app_add_to_cart', {'id': flower.id}) }}">Ajouter </a>
                                         </div>
                                     </form>
 

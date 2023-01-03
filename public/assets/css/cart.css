@@ -18,3 +18,11 @@
 .custom-table {
     height: 75vh;
 }
+
+.trash-custom {
+    width: 20px;
+}
+
+.quantity-custom {
+    width: 15px;
+}

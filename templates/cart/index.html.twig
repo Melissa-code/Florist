@@ -4,9 +4,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/cart.css') }}">
 {% endblock css %}
 
-{% block title %}
-    Panier
-{% endblock %}
+{% block title %}Panier{% endblock %}
 
 
 {% block main %}
@@ -22,9 +20,11 @@
 
                 {#  Cart Table #}
 
-                <section class="col-md-10 ">
+                <section class="col-md-10 mx-2">
+
+                    {% if(cart | length > 0) %}
                     <table class="table table-striped custom-border">
-                        <thead class="custom-thead">
+                        <thead class="custom-thead text-center">
                         <tr>
                             <th scope="col">Image</th>
                             <th scope="col">Nom</th>
@@ -34,44 +34,51 @@
                             <th scope="col">Supprimer</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row"><img class="cart-img" src="{{ asset('assets/img/photos/tulipe-printemps.png') }}" alt=""></th>
-                            <td>Tulipe</td>
-                            <td>19,95 €</td>
-                            <td>10</td>
-                            <td>19,95 €</td>
-                            <td>x</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><img class="cart-img" src="{{ asset('assets/img/photos/rose-printemps.png') }}" alt=""></th>
-                            <td>Rose</td>
-                            <td>19,95 €</td>
-                            <td>12</td>
-                            <td>19,95 €</td>
-                            <td>x</td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><img class="cart-img" src="{{ asset('assets/img/photos/iris-printemps-ete-automne.png') }}" alt=""></th>
-                            <td>Iris</td>
-                            <td>19,95 €</td>
-                            <td>20</td>
-                            <td>19,95 €</td>
-                            <td>x</td>
-                        </tr>
 
+                        <tbody class="text-center">
+                        {% set total = null %}
+                        {% for product in cart %}
+                            <tr>
+                                <th scope="row"><img class="cart-img" src="{{ asset('assets/img/photos/' ~ product.flower.image) }}" alt="{{ product.flower.name }}"></th>
+                                <td>{{ product.flower.name }}</td>
+                                <td>{{ product.flower.price }} €</td>
+                                <td>
+                                    <a href="{{ path('app_decrease_to_cart', {'id': product.flower.id}) }}"><img src="{{ asset('assets/img/icons/minus.png') }}" alt="diminuer une quantité" class="quantity-custom"></a>
+                                        {{ product.quantity }}
+                                    <a href="{{ path('app_add_to_cart', {'id': product.flower.id}) }}"><img src="{{ asset('assets/img/icons/plus.png') }}" alt="ajouter une quantité" class="quantity-custom"></a>
+                                </td>
+                                <td>{{ (product.flower.price * product.quantity) }} €</td>
+                                <td>
+                                    <a href="{{ path('app_delete_to_cart', {'id': product.flower.id }) }}">
+                                        <img src="{{ asset('assets/img/icons/trash.svg') }}" alt="icône supprimer la fleur" class="trash-custom">
+                                    </a>
+                                </td>
+                            </tr>
+                            {% set total = total + (product.flower.price * product.quantity) %}
+                        {% endfor %}
                         </tbody>
                     </table>
 
-                    {#  Buttons #}
+                    {# Total price #}
+
+                    <div class="text-right">
+                        <b>Nombre de fleurs : {{ cart | length }}</b><br>
+                        <b>TOTAL : {{ total }} € TTC</b>
+                    </div>
+
+                    {# Buttons #}
 
                     <div class="d-flex justify-content-center py-4">
-                        <button type="submit" class="btn btn-dark custom-btn mr-2">Poursuivre mes achats</button>
-                        <button type="submit" class="btn btn-dark custom-btn mr-2">Supprimer mon panier</button>
-                        <button type="submit" class="btn btn-dark custom-btn mr-2">Valider mon panier</button>
+                        <a href="{{ path('app_shop') }}" class="btn btn-dark custom-btn mr-2">Poursuivre mes achats</a>
+                        <a href="{{ path('app_remove_cart') }}" class="btn btn-dark custom-btn mr-2">Supprimer mon panier</a>
+                        <a href="" class="btn btn-dark custom-btn mr-2">Valider mon panier</a>
                     </div>
-                </section>
 
+                    {% else %}
+                        <p class="text-center">Votre panier est vide</p>
+
+                    {% endif %}
+                </section>
 
                 {# Pagination  #}
 
