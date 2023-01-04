@@ -4,7 +4,13 @@
     <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
 {% endblock css %}
 
-{% block title %} Ajouter une adresse {% endblock %}
+{% block title %}
+    {% if isUpdated %}
+        Modification de l'adresse {{ address.name }}
+    {% else %}
+        Ajout d'une adresse
+    {% endif %}
+{% endblock %}
 
 
 {% block main %}
@@ -15,17 +21,21 @@
 
                 {#  Title #}
 
-                <section class="col-12 title py-4">
-                    <h1 class="text-center mb-4">Ajouter une adresse</h1>
+                <section class="col-12 title py-4 text-center">
+                    {% if isUpdated %}
+                        <h1>Modification de l'adresse {{ address.name }}</h1>
+                    {% else %}
+                        <h1 class="text-center mb-4">Ajout d'une adresse</h1>
+                    {% endif %}
                 </section>
 
+                {# Address form #}
+
                 <section class="col-12 py-2 text-white address py-5">
-
                     <div class="row d-flex justify-content-center py-4 h-100">
-
                         <div class="col-9 col-md-7 col-lg-6 address-form rounded p-4 p-md-5 d-flex justify-content-center align-items-center">
 
-                        {{ form_start(form) }}
+                            {{ form_start(form) }}
 
                             <div class="row mb-2">
                                 <div class="col-3 col-md-2">
@@ -43,7 +53,6 @@
                                 <div class="col-12 col-md-5">
                                     {{ form_row(form.country) }}
                                 </div>
-
                             </div>
 
                             <div class="col-12 d-flex justify-content-center mt-4">
@@ -52,7 +61,6 @@
                             </div>
 
                         {{ form_end(form) }}
-
                         </div>
                     </div>
 

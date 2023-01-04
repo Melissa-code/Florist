@@ -20,6 +20,7 @@ class AddressType extends AbstractType
                 'class' => User::class,
                 'choice_label' => 'id',
                 'disabled' => true,
+                'label' => "Client",
             ])
             ->add('name', TextType::class, [
                 'label'=> 'Nom de l\'adresse : ',

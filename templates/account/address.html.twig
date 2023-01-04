@@ -15,21 +15,63 @@
 
             {#  Title #}
 
-            <section class="col-12 title pt-4 ">
+            <section class="col-12 title pt-4">
                 <h1 class="text-center mb-4">Mes adresses</h1>
-                <a class="btn custom-btn text-white mx-1" href="">Ajouter</a>
             </section>
 
             {# Flash message : success or error #}
 
-            <section class="col-12 text-center">
+            <section class="col-12 col-md-8 col-lg-6 d-flex justify-content-center">
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-dismissible alert-success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </section>
 
-                <div>
+            {# Addresses list #}
+
+            <section class="col-12 text-center addresses p-4 mt-3">
+
+                <div class="my-4">
+                    <a class="btn custom-btn text-white mx-1" href="{{ path('app_account_add_address') }}">
+                        <img src="{{ asset('assets/img/icons/add.svg') }}" alt="ajouter une adresse" style="width: 20px">
+                        Ajouter</a>
+                </div>
+
+                <div class="row d-flex justify-content-center my-4">
+                    <div class="col-10 d-flex justify-content-center align-items-center flex-wrap m-4">
+
                     {% if app.user.addresses|length == 0 %}
                         <p>Vous n'avez pas encore ajouté d'adresses dans votre compte. Pour en ajouter une, veuillez
                             <a href="{{ path('app_account_add_address') }}">cliquer ici.</a>
                         </p>
+                    {% else %}
+                        {% for address in app.user.addresses %}
+                            <div class="card m-2" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title font-weight-bold">{{ address.name }}</h5>
+                                    <p class="card-text">{{ address.street }}</p>
+                                    <p class="card-text">{{ address.zipcode }} {{ address.country }}</p>
+
+                                    <div class="d-flex justify-content-center">
+                                        <a href="{{ path('app_account_update_address', {'id': address.id }) }}" class="btn custom-btn text-white mx-1">
+                                            <img src="{{ asset('assets/img/icons/update.svg') }}" alt="modifier une adresse" style="width: 20px">
+                                        </a>
+                                        <form action="{{ path('app_account_delete_address', {'id': address.id}) }}" method="POST" onsubmit="return confirm('Confirmez-vous la suppression de cette adresse ?')">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('REMOVE' ~ address.id) }}">
+                                            <button type="submit" class="btn custom-btn text-white mx-1" >
+                                                <img src="{{ asset('assets/img/icons/delete.svg') }}" alt="supprimer une adresse" style="width: 20px">
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
                     {% endif %}
+                    </div>
                 </div>
 
             </section>

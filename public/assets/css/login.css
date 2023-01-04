@@ -1,8 +1,8 @@
-.login-form, .signup-form, .address-form  {
+.login-form, .signup-form, .address-form {
     background-color: #31493C;
 }
 
-.login, .signup, .address{
+.login, .signup, .address, .addresses {
     background-color: #7A9E7E;
 
 }
